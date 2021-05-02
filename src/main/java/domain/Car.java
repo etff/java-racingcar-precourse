@@ -1,6 +1,6 @@
 package domain;
 
-import java.util.Objects;
+import utils.StringUtil;
 
 /**
  * 자동차.
@@ -20,6 +20,10 @@ public class Car {
      */
     private final int position;
 
+    public Car(String name) {
+        this(name, MIN_POSITION);
+    }
+
     public Car(String name, int position) {
         validate(name, position);
         this.name = name;
@@ -27,7 +31,7 @@ public class Car {
     }
 
     public void validate(String name, int position) {
-        if (Objects.isNull(name) || name.isEmpty()) {
+        if (StringUtil.isBlank(name)) {
             throw new IllegalArgumentException(EMPTY_NAME_NOT_ALLOWED);
         }
         if (position < MIN_POSITION) {
