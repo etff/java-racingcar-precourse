@@ -2,6 +2,8 @@ package domain;
 
 import utils.StringUtil;
 
+import java.util.Objects;
+
 /**
  * 자동차.
  */
@@ -62,4 +64,24 @@ public class Car {
         return position;
     }
 
+    public int getMaxPosition(int maxPosition) {
+        return Math.max(maxPosition, this.position);
+    }
+
+    public boolean isMaxPosition(int maxPosition) {
+        return this.position == maxPosition;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Car)) return false;
+        Car car = (Car) o;
+        return getPosition() == car.getPosition() && Objects.equals(getName(), car.getName());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getName(), getPosition());
+    }
 }
