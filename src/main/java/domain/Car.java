@@ -2,16 +2,26 @@ package domain;
 
 import java.util.Objects;
 
+/**
+ * 자동차.
+ */
 public class Car {
     public static final String EMPTY_NAME_NOT_ALLOWED = "빈값을 입력할 수 없습니다.";
     public static final String NEGATIVE_NUMBER_NOT_ALLOWED = "음수가 입력될 수 없습니다.";
     public static final int MIN_POSITION = 0;
+    public static final int MOVE_FORWARD = 1;
 
+    /**
+     * 자동차 이름.
+     */
     private final String name;
+    /**
+     * 자동차 위치.
+     */
     private final int position;
 
     public Car(String name, int position) {
-        validate(name , position);
+        validate(name, position);
         this.name = name;
         this.position = position;
     }
@@ -25,6 +35,21 @@ public class Car {
         }
     }
 
+    /**
+     * 자동차를 움직입니다.
+     *
+     * @return 이동이 적용된 자동차.
+     */
+    public Car move() {
+        final MoveStrategy moveStrategy = new MoveStrategy();
+        final int randomNumber = moveStrategy.getRandomNumber();
+        if (moveStrategy.canMove(randomNumber)) {
+            return new Car(this.name, this.position + MOVE_FORWARD);
+        }
+        return new Car(this.name, this.position);
+    }
+
+
     public String getName() {
         return name;
     }
@@ -32,4 +57,5 @@ public class Car {
     public int getPosition() {
         return position;
     }
+
 }
