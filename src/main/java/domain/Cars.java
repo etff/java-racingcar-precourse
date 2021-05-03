@@ -1,7 +1,5 @@
 package domain;
 
-import utils.StringUtil;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -15,14 +13,12 @@ public class Cars {
         this.cars = cars;
     }
 
-    public Cars(String input) {
-        generateCars(input);
+    public Cars(Names names) {
+        generateCars(names);
     }
 
-    private void generateCars(String input) {
-        String[] splitText = StringUtil.splitText(input);
-        for (String text: splitText) {
-            Name name = new Name(text);
+    private void generateCars(Names names) {
+        for (Name name : names.getNames()) {
             cars.add(new Car(name));
         }
     }

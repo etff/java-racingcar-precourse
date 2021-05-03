@@ -1,6 +1,7 @@
 package ui;
 
 import domain.Cars;
+import domain.Number;
 import domain.Record;
 import domain.Winners;
 import view.InputView;
@@ -31,8 +32,8 @@ public class RacingController {
     }
 
     private void moveCars() {
-        int count = InputView.askNumberOfTries();
-        for (int i = FIRST_GAME; i <= count; i++) {
+        Number count = InputView.askNumberOfTries();
+        for (int i = FIRST_GAME; i <= count.getNumber(); i++) {
             this.cars = cars.move();
             record.add(i, this.cars);
         }

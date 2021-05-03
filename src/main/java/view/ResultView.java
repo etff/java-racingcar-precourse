@@ -30,7 +30,7 @@ public class ResultView {
         for (int count = FIRST_GAME; count <= record.size(); count++) {
             Cars record = this.record.getRecord(count);
             showCarPositions(record);
-            System.out.println();
+            System.out.print(System.lineSeparator());
         }
         showWinner();
     }

@@ -1,5 +1,8 @@
 package view;
 
+import domain.Names;
+import domain.Number;
+
 import java.util.Scanner;
 
 public class InputView {
@@ -10,13 +13,23 @@ public class InputView {
     private InputView() {
     }
 
-    public static String askNameOfCars() {
+    public static Names askNameOfCars() {
         System.out.println(CAR_NAME_QUESTION);
-        return scanner.nextLine();
+        try {
+            return new Names(scanner.nextLine());
+        } catch (IllegalArgumentException e) {
+            System.out.println(e.getMessage());
+            return askNameOfCars();
+        }
     }
 
-    public static int askNumberOfTries() {
+    public static Number askNumberOfTries() {
         System.out.println(TRY_COUNT_QUESTION);
-        return scanner.nextInt();
+        try {
+            return new Number(scanner.nextLine());
+        } catch (IllegalArgumentException e) {
+            System.out.println(e.getMessage());
+            return askNumberOfTries();
+        }
     }
 }

@@ -4,6 +4,9 @@ public class StringUtil {
     public static final String INPUT_ERROR = "잘못된 입력입니다.";
     public static final String DELIMITER = ",";
 
+    private StringUtil() {
+    }
+
     public static boolean isBlank(String value) {
         if (value == null || value.isEmpty()) {
             return true;
