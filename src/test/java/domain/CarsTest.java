@@ -17,17 +17,19 @@ class CarsTest {
 
     private Name name1;
     private Name name2;
+    private Position position;
 
     @BeforeEach
     void setUp() {
         name1 = new Name(CAR1_NAME);
         name2 = new Name(CAR2_NAME);
+        position = new Position(0);
     }
 
     @Test
     void create() {
-        Car car1 = new Car(name1, 0);
-        Car car2 = new Car(name2, 0);
+        Car car1 = new Car(name1, position);
+        Car car2 = new Car(name2, position);
         List<Car> cars = Arrays.asList(car1, car2);
 
         assertThat(new Cars(cars)).isNotNull();

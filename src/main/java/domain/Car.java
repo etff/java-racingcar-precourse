@@ -6,7 +6,6 @@ import java.util.Objects;
  * 자동차.
  */
 public class Car {
-    public static final String NEGATIVE_NUMBER_NOT_ALLOWED = "음수가 입력될 수 없습니다.";
     public static final int MIN_POSITION = 0;
     public static final int MOVE_FORWARD = 1;
 
@@ -17,22 +16,15 @@ public class Car {
     /**
      * 자동차 위치.
      */
-    private final int position;
+    private final Position position;
 
     public Car(Name name) {
-        this(name, MIN_POSITION);
+        this(name, new Position(MIN_POSITION));
     }
 
-    public Car(Name name, int position) {
-        validate(position);
+    public Car(Name name, Position position) {
         this.name = name;
         this.position = position;
-    }
-
-    public void validate(int position) {
-        if (position < MIN_POSITION) {
-            throw new IllegalArgumentException(NEGATIVE_NUMBER_NOT_ALLOWED);
-        }
     }
 
     /**
@@ -44,7 +36,8 @@ public class Car {
         final MoveStrategy moveStrategy = new MoveStrategy();
         final int randomNumber = moveStrategy.getRandomNumber();
         if (moveStrategy.canMove(randomNumber)) {
-            return new Car(this.name, this.position + MOVE_FORWARD);
+            int newPosition = this.position.getPosition() + MOVE_FORWARD;
+            return new Car(this.name, new Position(newPosition));
         }
         return new Car(this.name, this.position);
     }
@@ -54,15 +47,15 @@ public class Car {
     }
 
     public int getPosition() {
-        return position;
+        return position.getPosition();
     }
 
-    public int getMaxPosition(int maxPosition) {
-        return Math.max(maxPosition, this.position);
+    public int updateMaxPosition(int comparePosition) {
+        return position.getMaxPosition(comparePosition);
     }
 
     public boolean isMaxPosition(int maxPosition) {
-        return this.position == maxPosition;
+        return position.isMaxPosition(maxPosition);
     }
 
     @Override

@@ -33,7 +33,7 @@ public class Winners {
     private int getMaxPosition(Cars cars) {
         int maxPosition = 0;
         for (Car car : cars.getCars()) {
-            maxPosition = car.getMaxPosition(maxPosition);
+            maxPosition = car.updateMaxPosition(maxPosition);
         }
         return maxPosition;
     }

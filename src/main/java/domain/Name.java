@@ -9,7 +9,6 @@ import java.util.Objects;
  */
 public class Name {
     public static final String EMPTY_NAME_NOT_ALLOWED = "빈값을 입력할 수 없습니다.";
-
     private String name;
 
     public Name(String name) {
