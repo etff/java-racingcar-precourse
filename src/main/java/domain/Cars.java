@@ -5,17 +5,14 @@ import utils.StringUtil;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * 자동차 목록.
+ */
 public class Cars {
     private List<Car> cars = new ArrayList<>();
-    private List<Integer> positions = new ArrayList<>();
 
     public Cars(List<Car> cars) {
-        this.cars = new ArrayList<>(cars);
-    }
-
-    public Cars(List<Car> cars, List<Integer> positions) {
-        this.cars = new ArrayList<>(cars);
-        this.positions = new ArrayList<>(positions);
+        this.cars = cars;
     }
 
     public Cars(String input) {
@@ -30,15 +27,12 @@ public class Cars {
     }
 
     public Cars move() {
-        List<Car> tempCars = new ArrayList<>();
-        List<Integer> tempPosition = new ArrayList<>();
-
+        List<Car> carsRecords = new ArrayList<>();
         for (Car car : cars) {
             Car movedCar = car.move();
-            tempPosition.add(movedCar.getPosition());
-            tempCars.add(movedCar);
+            carsRecords.add(movedCar);
         }
-        return new Cars(tempCars, tempPosition);
+        return new Cars(carsRecords);
     }
 
     public List<Car> getCars() {

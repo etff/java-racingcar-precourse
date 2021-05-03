@@ -3,6 +3,9 @@ package domain;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * 승자를 구합니다.
+ */
 public class Winners {
     private List<Car> winners;
 

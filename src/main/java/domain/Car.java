@@ -55,7 +55,6 @@ public class Car {
         return new Car(this.name, this.position);
     }
 
-
     public String getName() {
         return name;
     }

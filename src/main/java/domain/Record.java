@@ -1,25 +1,23 @@
 package domain;
 
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
+/**
+ * 경기를 기록합니다.
+ */
 public class Record {
-    private Map<Integer, List<Integer>> record;
+    private Map<Integer, Cars> record;
 
     public Record() {
-        this(new HashMap<>());
+        record = new HashMap<>();
     }
 
-    public Record(Map<Integer, List<Integer>> record) {
-        this.record = new HashMap<>(record);
+    public void add(int count, Cars cars) {
+        this.record.put(count, cars);
     }
 
-    public void add(int count, List<Integer> positions) {
-        this.record.put(count, positions);
-    }
-
-    public List<Integer> getRecord(int key) {
+    public Cars getRecord(int key) {
         return record.get(key);
     }
 
