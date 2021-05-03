@@ -1,14 +1,11 @@
 package domain;
 
-import utils.StringUtil;
-
 import java.util.Objects;
 
 /**
  * 자동차.
  */
 public class Car {
-    public static final String EMPTY_NAME_NOT_ALLOWED = "빈값을 입력할 수 없습니다.";
     public static final String NEGATIVE_NUMBER_NOT_ALLOWED = "음수가 입력될 수 없습니다.";
     public static final int MIN_POSITION = 0;
     public static final int MOVE_FORWARD = 1;
@@ -16,26 +13,23 @@ public class Car {
     /**
      * 자동차 이름.
      */
-    private final String name;
+    private final Name name;
     /**
      * 자동차 위치.
      */
     private final int position;
 
-    public Car(String name) {
+    public Car(Name name) {
         this(name, MIN_POSITION);
     }
 
-    public Car(String name, int position) {
-        validate(name, position);
+    public Car(Name name, int position) {
+        validate(position);
         this.name = name;
         this.position = position;
     }
 
-    public void validate(String name, int position) {
-        if (StringUtil.isBlank(name)) {
-            throw new IllegalArgumentException(EMPTY_NAME_NOT_ALLOWED);
-        }
+    public void validate(int position) {
         if (position < MIN_POSITION) {
             throw new IllegalArgumentException(NEGATIVE_NUMBER_NOT_ALLOWED);
         }
@@ -56,7 +50,7 @@ public class Car {
     }
 
     public String getName() {
-        return name;
+        return name.getName();
     }
 
     public int getPosition() {

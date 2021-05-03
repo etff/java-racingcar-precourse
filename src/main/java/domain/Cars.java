@@ -22,7 +22,8 @@ public class Cars {
     private void generateCars(String input) {
         String[] splitText = StringUtil.splitText(input);
         for (String text: splitText) {
-            cars.add(new Car(text));
+            Name name = new Name(text);
+            cars.add(new Car(name));
         }
     }
 
