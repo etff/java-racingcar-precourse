@@ -9,6 +9,8 @@ import java.util.Objects;
  */
 public class Name {
     public static final String EMPTY_NAME_NOT_ALLOWED = "빈값을 입력할 수 없습니다.";
+    public static final int MAXIMUM_NAME_LENGTH = 5;
+    public static final String MAXIMUM_NAME_LENGTH_EXCEED = "이름 입력 범위를 초과하였습니다";
     private String name;
 
     public Name(String name) {
@@ -18,6 +20,9 @@ public class Name {
     private String validate(String name) {
         if (StringUtil.isBlank(name)) {
             throw new IllegalArgumentException(EMPTY_NAME_NOT_ALLOWED);
+        }
+        if (name.length() > MAXIMUM_NAME_LENGTH) {
+            throw new IllegalArgumentException(MAXIMUM_NAME_LENGTH_EXCEED);
         }
         return name;
     }
